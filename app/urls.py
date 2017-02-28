@@ -20,7 +20,10 @@ from security.views import UserViewSet, GroupViewSet
 from loan.views import LoanViewSet
 from rest_framework import routers
 
-router = routers.DefaultRouter()
+from app.views import IndexView
+
+#router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
 router.register(r'loans', LoanViewSet)
@@ -31,4 +34,5 @@ urlpatterns = [
     url(r'^api/v1.0/auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1.0/', include(router.urls)),
     
+    url(r'^((?!api).)*$', IndexView.as_view(), name='index'),
 ]

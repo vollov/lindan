@@ -25,7 +25,7 @@ SECRET_KEY = '_smp9ct-zfr^%us@)41q9r=g50z=sqabymr)p8bswc)o0*1njn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.mcap.com']
 
 
 # Application definition
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,9 +72,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
-REST_FRAMEWORK = {
-    'PAGE_SIZE': 2
-}
+# REST_FRAMEWORK = {
+#     'PAGE_SIZE': 2
+# }
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -127,3 +127,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+RESOURCE_ROOT='e:/opt/var/www/lindan/'
+
+# variable for production
+STATIC_ROOT=  os.path.join(RESOURCE_ROOT,'static')
+
+#variables for developement
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
